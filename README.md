@@ -1,3 +1,3 @@
 # Тестовое задание
 
-запуск docker-compose up
+запуск `docker-compose up`
