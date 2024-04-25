@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	User{{ user.name }}
+{% endblock %}
+
+{% block body %}
+
+    <div style="text-align: center">
+        {% if user %}
+            <h1>Страница одного {{ user.role }} с ID {{ user.id }}</h1>
+            <div class="content-block">
+                <p>Имя: {{ user.name }}</p>
+                <p>Телефон: {{ user.telephone }}</p>
+                <p>Опыт: {{ user.experience }}</p>
+                <p>Роль: {{ user.role }}</p>
+            </div>
+        {% else %}
+            <h1>Человек с ID {{ user.id }} не найден</h1>
+        {% endif %}
+        {% if session.get('role') == 'admin' %}
+            <form action="/delete/{{ user.id }}" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit">Удалить</button>
+            </form>
+        {% endif %}
+    </div>
+
+
+{% endblock %}

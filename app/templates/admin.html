@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	AdminPage
+{% endblock %}
+
+{% block body %}
+	<h1 style="text-align: center">
+        Админка
+    </h1>
+
+    <div class="container">
+        <div class="left-column item">
+            {% for consumer in consumers %}
+                <div class="content-block">
+                    <p>Имя: {{ consumer.name }}</p>
+                    <p>Телефон: {{ consumer.telephone }}</p>
+                    <a href="consumers/{{ consumer.id }}">Узнать больше</a>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="right-column item">
+            {% for implementer in implementers %}
+                <div class="content-block">
+                    <p>Имя: {{ implementer.name }}</p>
+                    <p>Телефон: {{ implementer.telephone }}</p>
+                    <p>Опыт: {{ implementer.experience }}</p>
+                    <a href="implementers/{{ implementer.id }}">Узнать больше</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

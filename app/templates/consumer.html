@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	ConsumerPage
+{% endblock %}
+
+{% block body %}
+	<h1 style="text-align: center">
+        Страница исполнителей
+    </h1>
+
+
+    {% for implementer in implementers %}
+        <div class="content-block">
+            <p>Имя: {{ implementer.name }}</p>
+            <p>Телефон: {{ implementer.telephone }}</p>
+            <p>Опыт: {{ implementer.experience }}</p>
+            <a href="implementers/{{ implementer.id }}">Узнать больше</a>
+        </div>
+    {% endfor %}
+
+{% endblock %}

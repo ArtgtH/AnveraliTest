@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  web-app:
+    build: app/
+    container_name: web-app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: "Anverali"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "Metra2004"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - data:/var/lib/postgresql/data
+      - ./dumps/dump2.sql:/docker-entrypoint-initdb.d/dump2.sql
+    ports:
+      - 5433:5432
+
+volumes:
+  data:
